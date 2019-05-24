@@ -4,7 +4,7 @@ from blog.models import Summary,Article
 from django.core.paginator import Paginator
 # Create your views here.
 def hello_world(request):
-    return HttpResponse("hello world")
+    return HttpResponse("Hello World！")
 
 def get_index_summary_page(request):
     summary_list = Summary.objects.all()
@@ -25,7 +25,6 @@ def get_index_page(request):
     else:
         page = 1
 
-        
     all_ariticle = Summary.objects.all()
     paginator = paginator(all_ariticle,3)
     page_aritcle_list = paginator.page(page)
@@ -51,13 +50,15 @@ def get_index_page(request):
 
 
 
-def get_detail_page(request,aritcle_id):
+def get_detail_page(request,summary_id):
     all_ariticle = Summary.objects.all()
     cur_article = None
     for aritcle in all_ariticle:
-        if aritcle.aritcle_id == aritcle_id:
+        if aritcle.summary_id == summary_id:
             cur_article = aritcle
             break
 
-    return render(request,'blog/detail.html',{'current_aritcle':cur_article})
+
+    sectionList = cur_article.summary_content.split('\n')
+    return render(request,'blog/detail.html',{'curr_aritcle':cur_article,'section_list':sectionList})
 

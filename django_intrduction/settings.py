@@ -13,19 +13,20 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))#项目根目录
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '7bet#*gq%**^7*)5m%)avx&sg6yv_^&t5b!@8+$(&of&_^1wv)'
+SECRET_KEY = '7bet#*gq%**^7*)5m%)avx&sg6yv_^&t5b!@8+$(&of&_^1wv)'#项目安全码
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True #不要在正式环境中打开 如果打开的话异常会抛到前端
 
 ALLOWED_HOSTS = []
+#ALLOWED_HOSTS = ['localhost'] 只允许host是数组中的内容的地址访问我们的网站 其他地址都屏蔽了
 
 
 # Application definition
@@ -37,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blog.apps.BlogConfig',
+    'blog',#自己创建的应用要写在这里面 才能被识别
 ]
 
 MIDDLEWARE = [
@@ -52,6 +53,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'django_intrduction.urls'
 
+#django中的模板就是一个个的html文件
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
